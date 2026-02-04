@@ -14,19 +14,177 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String   @id @default(cuid())
+  username          String   @unique
+  displayName       String
+  avatar            String?
+  publicKey         String   // For end-to-end encryption
+  privateKey        String   // Encrypted private key
+  deviceId          String   @unique // Unique device identifier
+  isOnline          Boolean  @default(false)
+  lastSeen          DateTime @default(now())
+  connectivityMode  String   @default("auto") // auto, internet, mesh
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relationships
+  sentMessages      Message[] @relation("SentMessages")
+  receivedMessages  Message[] @relation("ReceivedMessages")
+  groupMessages     GroupMessage[]
+  groupMemberships  GroupMember[]
+  createdGroups     Group[]   @relation("GroupCreator")
+  broadcastMessages BroadcastMessage[]
+  
+  @@map("users")
 }
 
-model Post {
+model Group {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  avatar      String?
+  isPublic    Boolean  @default(false)
+  creatorId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  creator     User         @relation("GroupCreator", fields: [creatorId], references: [id])
+  members     GroupMember[]
+  messages    GroupMessage[]
+  
+  @@map("groups")
+}
+
+model GroupMember {
   id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  groupId   String
+  userId    String
+  role      String   @default("member") // admin, member
+  joinedAt  DateTime @default(now())
+  
+  // Relationships
+  group     Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  user      User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([groupId, userId])
+  @@map("group_members")
+}
+
+model Message {
+  id              String   @id @default(cuid())
+  content         String
+  encryptedContent String? // For end-to-end encrypted messages
+  messageType     String   @default("text") // text, image, file, location
+  senderId        String
+  receiverId      String
+  status          String   @default("pending") // pending, sent, delivered, read
+  transportMode   String   @default("auto") // internet, mesh, auto
+  replyToId       String?
+  editedAt        DateTime?
+  deliveredAt     DateTime?
+  readAt          DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relationships
+  sender          User      @relation("SentMessages", fields: [senderId], references: [id])
+  receiver        User      @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  replyTo         Message?  @relation("MessageReply", fields: [replyToId], references: [id])
+  replies         Message[] @relation("MessageReply")
+  attachments     MessageAttachment[]
+  
+  @@map("messages")
+}
+
+model GroupMessage {
+  id              String   @id @default(cuid())
+  content         String
+  encryptedContent String? // For end-to-end encrypted messages
+  messageType     String   @default("text") // text, image, file, location
+  senderId        String
+  groupId         String
+  status          String   @default("pending") // pending, sent, delivered, read
+  transportMode   String   @default("auto") // internet, mesh, auto
+  replyToId       String?
+  editedAt        DateTime?
+  deliveredAt     DateTime?
+  readAt          DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relationships
+  sender          User            @relation(fields: [senderId], references: [id])
+  group           Group           @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  replyTo         GroupMessage?   @relation("GroupMessageReply", fields: [replyToId], references: [id])
+  replies         GroupMessage[]  @relation("GroupMessageReply")
+  attachments     MessageAttachment[]
+  
+  @@map("group_messages")
+}
+
+model MessageAttachment {
+  id              String   @id @default(cuid())
+  messageId       String
+  groupMessageId  String?
+  fileName        String
+  fileSize        Int
+  mimeType        String
+  filePath        String
+  thumbnailPath   String?
+  encryptedPath   String?
+  createdAt       DateTime @default(now())
+  
+  // Relationships
+  message         Message?       @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  groupMessage    GroupMessage?  @relation(fields: [groupMessageId], references: [id], onDelete: Cascade)
+  
+  @@map("message_attachments")
+}
+
+model BroadcastMessage {
+  id              String   @id @default(cuid())
+  content         String
+  senderId        String
+  messageType     String   @default("text") // text, emergency, sos
+  range           String   @default("nearby") // nearby, area, global
+  transportMode   String   @default("mesh") // mesh, internet
+  expiresAt       DateTime?
+  createdAt       DateTime @default(now())
+  
+  // Relationships
+  sender          User @relation(fields: [senderId], references: [id])
+  
+  @@map("broadcast_messages")
+}
+
+model OfflineQueue {
+  id              String   @id @default(cuid())
+  type            String   // message, group_message, broadcast
+  data            String   // JSON data
+  targetId        String?  // User ID or Group ID
+  retryCount      Int      @default(0)
+  maxRetries      Int      @default(5)
+  nextRetryAt     DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("offline_queue")
+}
+
+model MeshPeer {
+  id              String   @id @default(cuid())
+  deviceId        String   @unique
+  username        String
+  displayName     String
+  publicKey       String
+  lastSeen        DateTime @default(now())
+  connectionType  String   // bluetooth, wifi-direct
+  signalStrength  Int?
+  isDirect        Boolean  @default(true)
+  hopCount        Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("mesh_peers")
 }

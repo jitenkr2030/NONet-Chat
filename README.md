@@ -1,141 +1,352 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# NoNet Chat
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+🧠 **Chat without internet. Works online and offline.**
 
-## ✨ Technology Stack
+NoNet Chat is a powerful hybrid messaging application that automatically switches between internet-based messaging and local mesh networking, ensuring seamless communication even during network failures, disasters, or internet shutdowns.
 
-This scaffold provides a robust foundation built with:
+## 🚀 Core Features
 
-### 🎯 Core Framework
-- **⚡ Next.js 16** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+### 📡 **Hybrid Connectivity Engine**
+- ✅ Automatically detects network availability
+- ✅ Chooses best transport: Internet (when available) or Mesh network (when offline)
+- ✅ Zero manual switching required
+- ✅ Uninterrupted communication
+- ✅ Works in low-connectivity areas
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+### 💬 **Offline-First Messaging**
+- ✅ Messages are stored locally first
+- ✅ Instant UI response
+- ✅ Automatic delivery when a route becomes available
+- ✅ No message loss
+- ✅ Smooth WhatsApp-like experience
+- ✅ Works even if app crashes or phone restarts
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### 🌐 **Mesh Network Chatting**
+- ✅ Device-to-device messaging
+- ✅ Multi-hop message relay
+- ✅ Store-and-forward delivery
+- ✅ Auto peer discovery
+- ✅ Works during internet shutdowns
+- ✅ Messages travel via nearby phones
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Fetch** - Promise-based HTTP request
+### 👥 **One-to-One & Group Chats**
+- ✅ Private encrypted chats
+- ✅ Local mesh groups
+- ✅ Internet-based global groups
+- ✅ Personal + community communication
+- ✅ Works online and offline
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+### 📎 **Media & File Sharing**
+- ✅ Image, video, document sharing
+- ✅ Chunked file transfer
+- ✅ Resume interrupted transfers
+- ✅ Reliable transfers
+- ✅ Optimized for low bandwidth
+- ✅ File encryption for sensitive content
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+### 🔐 **Privacy & Security**
+- ✅ End-to-end encryption
+- ✅ Device-based identity (no phone number required)
+- ✅ Offline key exchange (QR code)
+- ✅ No central surveillance
+- ✅ Ideal for journalists & activists
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+### 📢 **Broadcast & Emergency Mode**
+- ✅ Area-wide broadcast messages
+- ✅ SOS alerts
+- ✅ Emergency channels auto-enabled offline
+- ✅ Disaster-ready communication
+- ✅ Government / NGO adoption potential
 
-## 🎯 Why This Scaffold?
+### 🧠 **Smart Routing & Optimization**
+- ✅ Shortest path routing
+- ✅ Battery-aware message relays
+- ✅ Hop-limit control
+- ✅ Efficient energy usage
+- ✅ Stable mesh performance
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
+### 🔔 **Message Status & Sync**
+- ✅ Sending / Sent / Delivered / Read status
+- ✅ Retry on failure
+- ✅ Auto-sync when internet returns
+- ✅ User confidence
+- ✅ Reliable delivery tracking
 
-## 🚀 Quick Start
+### ⚙️ **App Controls & Settings**
+- ✅ Internet-only / Mesh-only mode
+- ✅ Battery saver mode
+- ✅ Visibility control (discoverable / hidden)
+- ✅ Language & theme selection
+- ✅ Profile management
+- ✅ Data export/import
 
-```bash
-# Install dependencies
-bun install
+## 🛠 Tech Stack
 
-# Start development server
-bun run dev
+### 📱 **Frontend (Web App)**
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 4 with shadcn/ui
+- **State Management**: Zustand with persistence
+- **Real-time**: Socket.IO client
+- **Icons**: Lucide React
 
-# Build for production
-bun run build
+### 📡 **Networking Layer**
+- **Internet Mode**: WebSocket (real-time chat) + REST API
+- **Mesh Mode**: Bluetooth LE + Wi-Fi Direct (simulation)
+- **Transport Selection**: Intelligent automatic switching
 
-# Start production server
-bun start
+### 🔐 **Security**
+- **Encryption**: AES-256 encryption
+- **Key Exchange**: ECC / RSA key exchange
+- **Storage**: Secure encrypted local storage
+- **Identity**: QR-based identity verification
+
+### 🗄 **Data Storage**
+- **Database**: Prisma ORM with SQLite
+- **Local Storage**: IndexedDB for files and messages
+- **Caching**: Local memory caching
+- **Persistence**: Offline-first data storage
+
+### ☁️ **Backend Services**
+- **Main API**: Next.js API routes
+- **Chat Service**: Socket.IO server (port 3001)
+- **File Service**: Local file handling with encryption
+- **Broadcast Service**: Emergency messaging system
+
+## 🎯 Ideal Use Cases
+
+- 🚫 **Internet Shutdowns** - Stay connected when governments shut down the internet
+- 🆘 **Disaster & Emergency Response** - Coordinate help during natural disasters
+- 🏞️ **Rural & Remote Areas** - Connect where internet infrastructure is poor
+- 🏫 **Campus & Events** - Create local networks without internet dependency
+- 📰 **Journalists & NGOs** - Secure communication in sensitive environments
+- 📶 **Low-bandwidth Users** - Efficient messaging that works with poor connectivity
+- 🔒 **Privacy Advocates** - Communication without surveillance
+
+## 🔥 Key Differentiators
+
+- ✅ **Works without internet** - True offline capability
+- ✅ **No phone number required** - Device-based identity
+- ✅ **Mesh + cloud hybrid** - Best of both worlds
+- ✅ **Offline-first UX** - Instant response, reliable delivery
+- ✅ **India-scale ready** - Built for mass adoption
+- ✅ **Privacy by design** - End-to-end encryption, no tracking
+- ✅ **Emergency ready** - SOS signals and disaster response
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- Bun or npm package manager
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/jitenkr2030/NONet-Chat.git
+   cd NONet-Chat
+   ```
+
+2. **Install dependencies**
+   ```bash
+   bun install
+   # or
+   npm install
+   ```
+
+3. **Set up the database**
+   ```bash
+   bun run db:push
+   ```
+
+4. **Start the chat service**
+   ```bash
+   cd mini-services/chat-service
+   bun install
+   bun run dev &
+   cd ../..
+   ```
+
+5. **Start the development server**
+   ```bash
+   bun run dev
+   ```
+
+6. **Open the application**
+   - Navigate to `http://localhost:3000`
+   - Create your identity with username and display name
+   - Start chatting!
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+DATABASE_URL="file:./db/custom.db"
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+## 📱 Usage Guide
 
-## 🤖 Powered by Z.ai
+### **First Time Setup**
+1. Open the app in your browser
+2. Click "Create Identity"
+3. Enter a username (3-20 characters, alphanumeric + underscores)
+4. Enter your display name
+5. Your identity is created and stored locally
 
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
+### **Sending Messages**
+1. Click "New Chat" to start a conversation
+2. Choose "Direct Chat" or "Create Group"
+3. Select users from nearby mesh peers or search for users
+4. Type your message and press Enter
+5. Messages are sent instantly when online, queued when offline
 
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
+### **File Sharing**
+1. Click the paperclip icon in any chat
+2. Drag and drop files or click to browse
+3. Supported: Images, videos, documents (up to 50MB)
+4. Files are encrypted and can be previewed before download
 
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
+### **Emergency Broadcasting**
+1. Go to the "Broadcast" tab
+2. Choose message type: General, Emergency, or SOS
+3. Select range: Nearby, Area, or Global
+4. Type your message and send
+5. SOS signals automatically enable emergency mode
 
-## 📁 Project Structure
+### **Settings & Privacy**
+1. Click your profile picture → Settings
+2. Configure notifications, privacy, and connectivity
+3. Export/import your data for backup
+4. Manage your profile and security preferences
+
+## 🏗️ Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    NoNet Chat Architecture                    │
+├─────────────────────────────────────────────────────────────┤
+│  UI Layer (Next.js + React + Tailwind)                     │
+│  ├── Chat Interface                                         │
+│  ├── Settings & Profile                                     │
+│  └── Broadcast & Emergency                                  │
+├─────────────────────────────────────────────────────────────┤
+│  State Management (Zustand)                                 │
+│  ├── User Authentication                                    │
+│  ├── Message Store                                         │
+│  └── Connectivity Status                                    │
+├─────────────────────────────────────────────────────────────┤
+│  Transport Selector                                         │
+│  ├── Internet Mode (WebSocket/REST)                        │
+│  └── Mesh Mode (Bluetooth/Wi-Fi Direct)                    │
+├─────────────────────────────────────────────────────────────┤
+│  Services                                                 │
+│  ├── MessageService (Offline-first)                        │
+│  ├── BroadcastService (Emergency)                           │
+│  ├── FileService (Encryption + Storage)                    │
+│  └── ConnectivityService (Network Detection)               │
+├─────────────────────────────────────────────────────────────┤
+│  Data Layer                                               │
+│  ├── SQLite Database (Prisma)                             │
+│  ├── IndexedDB (Local Files)                              │
+│  └── LocalStorage (Settings)                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## 🔧 Development
+
+### **Available Scripts**
+
+```bash
+# Development
+bun run dev          # Start development server
+bun run lint          # Run ESLint
+bun run build        # Build for production
+
+# Database
+bun run db:push       # Push schema to database
+bun run db:generate   # Generate Prisma client
+bun run db:migrate    # Run database migrations
+bun run db:reset      # Reset database
+
+# Chat Service
+cd mini-services/chat-service
+bun run dev            # Start chat service
+```
+
+### **Project Structure**
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   ├── page.tsx          # Main application page
+│   └── layout.tsx        # Root layout
+├── components/            # React components
+│   ├── auth/             # Authentication components
+│   ├── chat/             # Chat interface components
+│   └── ui/               # shadcn/ui components
+├── lib/                   # Utilities and services
+│   ├── auth.ts           # Authentication service
+│   ├── broadcast-service.ts # Broadcast service
+│   ├── connectivity.ts   # Network detection
+│   ├── encryption.ts     # Encryption utilities
+│   ├── file-service.ts   # File handling
+│   ├── message-service.ts # Messaging service
+│   ├── store.ts          # Zustand store
+│   ├── websocket.ts      # WebSocket client
+│   └── db.ts             # Database client
+├── prisma/                # Database schema
+│   └── schema.prisma     # Prisma schema
+└── mini-services/        # Microservices
+    └── chat-service/      # Socket.IO chat service
 ```
 
-## 🎨 Available Features & Components
+## 🤝 Contributing
 
-This scaffold includes a comprehensive set of modern web development tools:
+We welcome contributions! Please follow these steps:
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+### **Development Guidelines**
+- Follow TypeScript best practices
+- Use ESLint and Prettier for code formatting
+- Write tests for new features
+- Update documentation for API changes
+- Ensure offline-first functionality
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+## 📄 License
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Fetch + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+## 🙏 Acknowledgments
 
-## 🤝 Get Started with Z.ai
+- **Next.js** - React framework for production
+- **Socket.IO** - Real-time communication
+- **Prisma** - Next-generation ORM
+- **shadcn/ui** - Beautiful UI components
+- **Tailwind CSS** - Utility-first CSS framework
+- **Lucide** - Beautiful icons
+- **Zustand** - Bearbones state management
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+## 📞 Support
+
+- 📧 **Email**: support@nonet.chat
+- 🐛 **Issues**: [GitHub Issues](https://github.com/jitenkr2030/NONet-Chat/issues)
+- 📖 **Documentation**: [Wiki](https://github.com/jitenkr2030/NONet-Chat/wiki)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/jitenkr2030/NONet-Chat/discussions)
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+🌟 **Star this repository if you find NoNet Chat useful!**
+
+🔄 **Share with others who need offline communication capabilities!**
+
+#NoNetChat #OfflineFirst #MeshNetworking #PrivacyFirst #EmergencyCommunication
